@@ -133,7 +133,7 @@ export default function Navbar() {
                     duration: 1.5,
                     ease: "easeInOut",
                   }}
-                  className="text-red-600 text-lg"
+                  className="text-[#997736] text-lg"
                 >
                   <FaFilePdf />
                 </motion.div>
@@ -247,7 +247,7 @@ export default function Navbar() {
                   duration: 1.5,
                   ease: "easeInOut",
                 }}
-                className="text-red-600 text-lg"
+                className="text-[#997736] text-lg"
               >
                 <FaFilePdf />
               </motion.div>
