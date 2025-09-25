@@ -1,16 +1,20 @@
+// hooks/useLeadForm.js
 import { useState } from "react";
+import emailjs from "emailjs-com";
 import { getUserIP } from "../utils";
 import { PROJECT_NAME } from "../constants";
 
-// Custom hook
-export const useLeadForm = (projectName =PROJECT_NAME) => {
+// Initialize EmailJS
+emailjs.init("-SU1cSsz3-T2DV9yD");
+
+export const useLeadForm = (projectName = PROJECT_NAME) => {
   const [phone, setPhone] = useState("");
   const [dialCode, setDialCode] = useState("");
   const [isoCode, setIsoCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const submitLead = async (formData) => {
+  const submitLead = async (formData, formElement = null) => {
     setLoading(true);
     try {
       const userIP = await getUserIP();
@@ -59,17 +63,32 @@ export const useLeadForm = (projectName =PROJECT_NAME) => {
         ...trackingData,
       };
 
+      // Send lead to backend API
       await fetch("https://backend-0w4b.onrender.com/api/leads/create_lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
+      // Optional: send via EmailJS if form element provided
+      if (formElement) {
+        await emailjs.sendForm(
+          "default_service",
+          "template_jsl0rss",
+          formElement
+        );
+      }
+
+      // Save locally
+      localStorage.setItem("user_phone", phone);
+
       setSuccess(true);
+
       // Reset phone fields
       setPhone("");
       setDialCode("");
       setIsoCode("");
+
       return true;
     } catch (err) {
       console.error("Lead submission failed:", err);
@@ -89,6 +108,6 @@ export const useLeadForm = (projectName =PROJECT_NAME) => {
     setSuccess,
     submitLead,
     setDialCode,
-    setIsoCode
+    setIsoCode,
   };
 };
