@@ -34,7 +34,8 @@ const EnquiryModal = ({ onClose }) => {
     setSuccess,
     submitLead,
     setDialCode,
-    setIsoCode
+    setIsoCode,
+    setNumberWithoutCountryCode
   } = useLeadForm();
 
   const handleSubmit = async (e) => {
@@ -80,6 +81,7 @@ const EnquiryModal = ({ onClose }) => {
                 setPhone(value);
                 setDialCode(`+${country.dialCode}`);
                 setIsoCode(country.countryCode);
+                setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
               }}
               inputProps={{ name: "phone", required: true }}
               containerClass="w-full"
@@ -116,7 +118,7 @@ const EnquiryModal = ({ onClose }) => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg text-center max-w-sm">
             <p className="mb-4 text-black">
-              Thank you for your inquiry! We will get back to you shortly.
+              Thank you for your enquiry! We will get back to you shortly.
             </p>
             <button
               onClick={() => {

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import { getUserIP } from "../utils";
-import { PROJECT_NAME } from "../constants";
+import { EMAIL_JS_PUBLIC_KEY, EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, PROJECT_NAME } from "../constants";
 
 // Initialize EmailJS
 emailjs.init("-SU1cSsz3-T2DV9yD");
@@ -13,8 +13,9 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
   const [isoCode, setIsoCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [numberWithoutCountryCode,setNumberWithoutCountryCode] = useState('')
 
-  const submitLead = async (formData, formElement = null) => {
+  const submitLead = async (formData) => {
     setLoading(true);
     try {
       const userIP = await getUserIP();
@@ -51,6 +52,7 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
       });
       trackingData.url = window.location.href;
 
+      // Payload for backend API (keep as is)
       const payload = {
         ...formData,
         mobile_number: phone,
@@ -63,21 +65,32 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
         ...trackingData,
       };
 
-      // Send lead to backend API
+      // 1. Send lead to backend API
       await fetch("https://backend-0w4b.onrender.com/api/leads/create_lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      // Optional: send via EmailJS if form element provided
-      if (formElement) {
-        await emailjs.sendForm(
-          "default_service",
-          "template_jsl0rss",
-          formElement
-        );
-      }
+      // 2. Send lead to EmailJS in fixed format
+      await emailjs.send(
+        EMAIL_JS_SERVICE_ID, // service_id
+        EMAIL_JS_TEMPLATE_ID, // template_id
+        {
+          from_name: formData?.name || "testing",
+          mobile_number: numberWithoutCountryCode,
+          mobile_number_iso_code: isoCode,
+          mobile_number_dial_code: dialCode,
+          user_ip: userIP,
+          to_name: PROJECT_NAME,
+          email: formData?.email ?? 'N/A',
+          lib_version: "2.6.4",
+          service_id: EMAIL_JS_SERVICE_ID,
+          template_id: EMAIL_JS_TEMPLATE_ID,
+          user_id: EMAIL_JS_PUBLIC_KEY,
+        },
+        EMAIL_JS_PUBLIC_KEY // public key
+      );
 
       // Save locally
       localStorage.setItem("user_phone", phone);
@@ -109,5 +122,6 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
     submitLead,
     setDialCode,
     setIsoCode,
+    setNumberWithoutCountryCode
   };
 };

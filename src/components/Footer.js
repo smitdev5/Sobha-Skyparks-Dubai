@@ -19,7 +19,8 @@ const Footer = () => {
     setSuccess,
     submitLead,
     setDialCode,
-    setIsoCode
+    setIsoCode,
+    setNumberWithoutCountryCode
   } = useLeadForm();
 
   const handleFormSubmit = async (e) => {
@@ -67,11 +68,10 @@ const Footer = () => {
                   country={"in"}
                   value={phone}
                   onChange={(value, country) => {
-                    console.log(value, country)
-                    
                     setPhone(value);
                     setDialCode(`+${country?.dialCode}`);
                     setIsoCode(country?.countryCode);
+                    setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}
                   inputProps={{ name: "phone", required: true }}
                   containerClass="w-full"
@@ -126,6 +126,7 @@ const Footer = () => {
                     setPhone(value);
                     setDialCode(`+${country.dialCode}`);
                     setIsoCode(country.countryCode);
+                    setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}
                   inputProps={{ name: "phone", required: true }}
                   containerClass="w-full"
@@ -179,7 +180,7 @@ const Footer = () => {
       {success && (
         <div className="alert-modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg text-center max-w-sm">
-            <p className="mb-4">Thank you for your inquiry! We will get back to you shortly.</p>
+            <p className="mb-4">Thank you for your enquiry! We will get back to you shortly.</p>
             <button
               onClick={() => setSuccess(false)}
               className="bg-[#b38e5d] text-white px-6 py-2 rounded-lg hover:bg-[#a07e4d] transition-colors"
