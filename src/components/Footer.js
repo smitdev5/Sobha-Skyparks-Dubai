@@ -164,22 +164,32 @@ const Footer = () => {
 
               </div>
 
-              <p className="text-gray-200 text-xs text-center max-w-2xl mt-2">
-                I consent to the processing of provided data according to the{" "}
-                <Link to="/privacy-policy" className="underline hover:text-white">
-                  Privacy Policy | Terms & Conditions
-                </Link>{" "}
-                |{" "}
-                {/* <Link
-                to="/terms-and-conditions"
-                className="underline hover:text-white"
-              >
-                Terms & Conditions
-              </Link> */}
-                . I authorize Nova Capital Real Estate and its representatives to
-                call, SMS, email, or WhatsApp me about its products and offers.
-                This consent overrides any registration for DNC / DNCR.
-              </p>
+              <div className=" flex items-start space-x-1 text-gray-200 text-xs text-center max-w-2xl mt-2">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  checked={consentChecked}
+                  onChange={(e) => setConsentChecked(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 accent-[#997736] cursor-pointer"
+                  required
+                />
+                <label
+                  htmlFor="consent"
+                  className="text-xs text-gray-200 leading-relaxed cursor-pointer"
+                >
+                  I consent to the processing of provided data according to the{" "}
+                  <Link
+                    to="/privacy-policy"
+                    // onClick={onClose}
+                    className="underline hover:text-white"
+                  >
+                    Privacy Policy | Terms & Conditions
+                  </Link>{" "}
+                  . I authorize Nova Capital Real Estate and its representatives
+                  to call, SMS, email, or WhatsApp me about its products and
+                  offers. This consent overrides any registration for DNC / DNCR.
+                </label>
+              </div>
 
               <button
                 type="submit"

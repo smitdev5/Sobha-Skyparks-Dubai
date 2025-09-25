@@ -55,7 +55,7 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
       // Payload for backend API (keep as is)
       const payload = {
         ...formData,
-        mobile_number: phone,
+        mobile_number: numberWithoutCountryCode,
         iso_code: isoCode,
         dial_code: dialCode,
         project_name: projectName,
