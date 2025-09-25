@@ -131,7 +131,7 @@ Protect against legal liability.
             <strong className="text-2xl">CONTACT US</strong>
             <br />
             To request to review, update, or delete your personal information or to otherwise reach us, please submit a request by e-mailing us  
-            at <strong className="text-2xl">info@nakheelproperty.ae</strong>
+            at <strong className="text-2xl">info@novaproperty.ae</strong>
           </p>
         </div>
       </div>
