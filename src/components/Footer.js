@@ -1,5 +1,5 @@
 // components/Footer.jsx
-import React from "react";
+import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useEnquiryModal } from "./EnquiryModal";
@@ -23,14 +23,18 @@ const Footer = () => {
     setNumberWithoutCountryCode
   } = useLeadForm();
 
+  const [consentChecked, setConsentChecked] = useState(false);
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (!consentChecked) return;
     const formData = {
       name: e.target.name.value,
     };
-    const result = await submitLead(formData,e?.target);
+    const result = await submitLead(formData, e?.target);
     if (result) {
       e.target.reset();
+      setConsentChecked(false);
     }
   };
 
@@ -93,22 +97,32 @@ const Footer = () => {
               </button>
             </form>
 
-            <p className="text-gray-200 text-sm mt-4 text-center max-w-2xl">
-              I consent to the processing of provided data according to the{" "}
-              <Link to="/privacy-policy" className="underline hover:text-white">
-                Privacy Policy | Terms & Conditions
-              </Link>{" "}
-              |{" "}
-              {/* <Link
-                to="/terms-and-conditions"
-                className="underline hover:text-white"
+            <div className="flex items-start space-x-2 text-gray-200 text-sm mt-4 text-center max-w-2xl">
+              <input
+                type="checkbox"
+                id="consent"
+                checked={consentChecked}
+                onChange={(e) => setConsentChecked(e.target.checked)}
+                className="mt-1 w-4 h-4 accent-[#997736] cursor-pointer"
+                required
+              />
+              <label
+                htmlFor="consent"
+                className="text-xs text-gray-200 leading-relaxed cursor-pointer"
               >
-                Terms & Conditions
-              </Link> */}
-              . I authorize Palm Jebel Ali Dubai and its representatives to
-              call, SMS, email, or WhatsApp me about its products and offers.
-              This consent overrides any registration for DNC / DNCR.
-            </p>
+                I consent to the processing of provided data according to the{" "}
+                <Link
+                  to="/privacy-policy"
+                  // onClick={onClose}
+                  className="underline hover:text-white"
+                >
+                  Privacy Policy | Terms & Conditions
+                </Link>{" "}
+                . I authorize Nova Capital Real Estate and its representatives
+                to call, SMS, email, or WhatsApp me about its products and
+                offers. This consent overrides any registration for DNC / DNCR.
+              </label>
+            </div>
           </div>
 
           {/* Mobile/Tablet Footer */}
@@ -150,19 +164,19 @@ const Footer = () => {
 
               <p className="text-gray-200 text-xs text-center max-w-2xl mt-2">
                 I consent to the processing of provided data according to the{" "}
-              <Link to="/privacy-policy" className="underline hover:text-white">
-                Privacy Policy | Terms & Conditions
-              </Link>{" "}
-              |{" "}
-              {/* <Link
+                <Link to="/privacy-policy" className="underline hover:text-white">
+                  Privacy Policy | Terms & Conditions
+                </Link>{" "}
+                |{" "}
+                {/* <Link
                 to="/terms-and-conditions"
                 className="underline hover:text-white"
               >
                 Terms & Conditions
               </Link> */}
-              . I authorize Palm Jebel Ali Dubai and its representatives to
-              call, SMS, email, or WhatsApp me about its products and offers.
-              This consent overrides any registration for DNC / DNCR.
+                . I authorize Nova Capital Real Estate and its representatives to
+                call, SMS, email, or WhatsApp me about its products and offers.
+                This consent overrides any registration for DNC / DNCR.
               </p>
 
               <button

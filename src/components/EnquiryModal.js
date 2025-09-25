@@ -5,6 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "../components/Style/EnquiryModal.css";
 import { useLeadForm } from "../hooks/useLeadForm";
+import { Link } from "react-router-dom";
 
 // Context for global modal access
 const EnquiryModalContext = createContext();
@@ -38,12 +39,16 @@ const EnquiryModal = ({ onClose }) => {
     setNumberWithoutCountryCode
   } = useLeadForm();
 
+   const [consentChecked, setConsentChecked] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!consentChecked) return;
     const formData = { name: e.target.name.value };
     const result = await submitLead(formData, e.target);
     if (result) {
       e.target.reset();
+      setConsentChecked(false);
     }
   };
 
@@ -93,13 +98,32 @@ const EnquiryModal = ({ onClose }) => {
             />
 
             {/* Consent Text */}
-            <p className="text-xs text-gray-400 leading-relaxed">
-              I Consent To The Processing of Provided Data According To Privacy
-              Policy | Terms & Conditions. I Authorize Preferred Partner and its
-              representatives to Call, SMS, Email or WhatsApp Me About Its
-              Products and Offers. This Consent Overrides Any Registration For
-              DNC/NDNC.
-            </p>
+            <div className="flex items-start space-x-2">
+              <input
+                type="checkbox"
+                id="consent"
+                checked={consentChecked}
+                onChange={(e) => setConsentChecked(e.target.checked)}
+                className="mt-1 w-4 h-4 accent-[#997736] cursor-pointer"
+                required
+              />
+              <label
+                htmlFor="consent"
+                className="text-xs text-gray-400 leading-relaxed cursor-pointer"
+              >
+                I consent to the processing of provided data according to the{" "}
+                <Link
+                  to="/privacy-policy"
+                  onClick={onClose}
+                  className="underline hover:text-white"
+                >
+                  Privacy Policy | Terms & Conditions
+                </Link>{" "}
+                . I authorize Nova Capital Real Estate and its representatives
+                to call, SMS, email, or WhatsApp me about its products and
+                offers. This consent overrides any registration for DNC / DNCR.
+              </label>
+            </div>
 
             {/* Submit Button */}
             <button
