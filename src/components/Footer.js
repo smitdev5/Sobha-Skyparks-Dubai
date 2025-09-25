@@ -73,7 +73,7 @@ const Footer = () => {
                   value={phone}
                   onChange={(value, country) => {
                     setPhone(value);
-                    setDialCode(`+${country.dialCode}`);
+                    setDialCode(`${country.dialCode}`);
                     setIsoCode(country.countryCode);
                     setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}
@@ -147,7 +147,7 @@ const Footer = () => {
                   value={phone}
                   onChange={(value, country) => {
                     setPhone(value);
-                    setDialCode(`+${country.dialCode}`);
+                    setDialCode(`${country.dialCode}`);
                     setIsoCode(country.countryCode);
                     setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}

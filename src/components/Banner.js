@@ -19,7 +19,7 @@ export default function Banner() {
       </video>
 
       {/* Dark Overlay for text clarity */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 "></div>
 
       {/* Content on top */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 px-4">
@@ -45,7 +45,7 @@ export default function Banner() {
             font-extrabold 
             uppercase 
             tracking-widest
-            bg-gradient-to-r from-white/80 via-white/60 to-white/20
+            bg-gradient-to-r from-white/80 via-white/60 to-white/60
             bg-clip-text 
             text-transparent
             drop-shadow-[2px_2px_10px_rgba(0,0,0,0.8)]
