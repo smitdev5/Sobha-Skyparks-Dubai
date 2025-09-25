@@ -39,7 +39,7 @@ const EnquiryModal = ({ onClose }) => {
     setNumberWithoutCountryCode
   } = useLeadForm();
 
-   const [consentChecked, setConsentChecked] = useState(false);
+   const [consentChecked, setConsentChecked] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

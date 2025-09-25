@@ -23,7 +23,7 @@ const Footer = () => {
     setNumberWithoutCountryCode
   } = useLeadForm();
 
-  const [consentChecked, setConsentChecked] = useState(false);
+  const [consentChecked, setConsentChecked] = useState(true);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -73,14 +73,14 @@ const Footer = () => {
                   value={phone}
                   onChange={(value, country) => {
                     setPhone(value);
-                    setDialCode(`+${country?.dialCode}`);
-                    setIsoCode(country?.countryCode);
+                    setDialCode(`+${country.dialCode}`);
+                    setIsoCode(country.countryCode);
                     setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}
                   inputProps={{ name: "phone", required: true }}
                   containerClass="w-full"
-                  inputClass="!w-full !h-[48px] !pl-14 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
-                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-3"
+                  inputClass="!w-full !h-[48px] !pl-12 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
+                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg "
                   dropdownClass="!bg-white !text-black"
                   searchClass="!bg-white !text-black"
                   enableSearch={true}
@@ -152,14 +152,16 @@ const Footer = () => {
                     setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}
                   inputProps={{ name: "phone", required: true }}
-                  containerClass="w-full"
-                  inputClass="!w-full !h-[48px] !pl-14 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
-                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-3"
-                  dropdownClass="!bg-white !text-black"
+                  containerClass="w-full relative"   // ✅ relative so dropdown positions properly
+                  inputClass="!w-full !h-[48px] !pl-12 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
+                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-1"
+                  dropdownClass="!bg-white !text-black !z-[9999] !absolute"   // ✅ keep dropdown above
                   searchClass="!bg-white !text-black"
                   enableSearch={true}
                   placeholder="Enter phone number"
+                  dropdownStyle={{ position: "absolute", zIndex: 9999 }}  // ✅ important
                 />
+
               </div>
 
               <p className="text-gray-200 text-xs text-center max-w-2xl mt-2">
