@@ -27,7 +27,7 @@ const Footer = () => {
     const formData = {
       name: e.target.name.value,
     };
-    const result = await submitLead(formData);
+    const result = await submitLead(formData,e?.target);
     if (result) {
       e.target.reset();
     }
