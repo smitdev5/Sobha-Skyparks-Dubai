@@ -4,7 +4,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useEnquiryModal } from "./EnquiryModal";
 import { useLeadForm } from "../hooks/useLeadForm";
-
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { openModal } = useEnquiryModal();
@@ -94,7 +94,20 @@ const Footer = () => {
             </form>
 
             <p className="text-gray-200 text-sm mt-4 text-center max-w-2xl">
-              I consent to the processing of provided data according to the Privacy Policy | Terms & Conditions. I authorize Palm Jebel Ali Dubai and its representatives to call, SMS, email, or WhatsApp me about its products and offers. This consent overrides any registration for DNC / DNCR.
+              I consent to the processing of provided data according to the{" "}
+              <Link to="/privacy-policy" className="underline hover:text-white">
+                Privacy Policy | Terms & Conditions
+              </Link>{" "}
+              |{" "}
+              {/* <Link
+                to="/terms-and-conditions"
+                className="underline hover:text-white"
+              >
+                Terms & Conditions
+              </Link> */}
+              . I authorize Palm Jebel Ali Dubai and its representatives to
+              call, SMS, email, or WhatsApp me about its products and offers.
+              This consent overrides any registration for DNC / DNCR.
             </p>
           </div>
 
@@ -136,7 +149,20 @@ const Footer = () => {
               </div>
 
               <p className="text-gray-200 text-xs text-center max-w-2xl mt-2">
-                I consent to the processing of provided data according to the Privacy Policy | Terms & Conditions. I authorize Palm Jebel Ali Dubai and its representatives to call, SMS, email, or WhatsApp me about its products and offers. This consent overrides any registration for DNC / DNCR.
+                I consent to the processing of provided data according to the{" "}
+              <Link to="/privacy-policy" className="underline hover:text-white">
+                Privacy Policy | Terms & Conditions
+              </Link>{" "}
+              |{" "}
+              {/* <Link
+                to="/terms-and-conditions"
+                className="underline hover:text-white"
+              >
+                Terms & Conditions
+              </Link> */}
+              . I authorize Palm Jebel Ali Dubai and its representatives to
+              call, SMS, email, or WhatsApp me about its products and offers.
+              This consent overrides any registration for DNC / DNCR.
               </p>
 
               <button
@@ -155,7 +181,7 @@ const Footer = () => {
       <div className="fixed bottom-0 left-0 w-full bg-[#997736] shadow-md lg:hidden">
         <div className="flex justify-around w-full p-2 space-x-2">
           <button className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
-            <i className="fas fa-phone-alt text-lg"></i>
+            <i className="fas fa-phone-alt text-lg transform rotate-90"></i>
             <span className="text-sm mt-1">CALL</span>
           </button>
           <button onClick={openModal} className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">

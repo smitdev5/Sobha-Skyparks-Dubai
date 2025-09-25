@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
@@ -10,6 +11,7 @@ import Invest from "./components/Invest";
 import { EnquiryModalProvider } from "./components/EnquiryModal";
 import LocationSection from "./components/Location";
 import LayoutSection from "./components/LayoutSection";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 import "./App.css";
 
 // DemoButton to test modal anywhere
@@ -50,7 +52,14 @@ function AppContent() {
 function App() {
   return (
     <EnquiryModalProvider>
-      <AppContent />
+      {/* <AppContent /> */}
+      {/* <Router> */}
+        <Routes>
+          <Route path="/" element={<AppContent />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          {/* <Route path="/terms-and-conditions" element={<TermsAndConditions />} /> */}
+        </Routes>
+      {/* </Router> */}
     </EnquiryModalProvider>
   );
 }

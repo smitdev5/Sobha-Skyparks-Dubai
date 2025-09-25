@@ -59,7 +59,7 @@ export default function Banner() {
         href="#about"
         className="absolute items-center justify-center bottom-6 -translate-x-1/2 animate-bounce z-10"
       >
-        <i className="ri-arrow-down-circle-fill text-[#997736] text-5xl"></i>
+        <i className="ri-arrow-down-circle-fill text-[#997736] text-5xl "></i>
       </a>
     </section>
   );

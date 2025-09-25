@@ -21,11 +21,11 @@ const LayoutSection = () => {
         {/* Left Image */}
         <div className="relative group shadow-md overflow-hidden">
           <img
-            src="./Assets/mp.jpg"
+            src="./Assets/fp.webp"
             alt="Master Plan"
-            className="w-full h-64 md:h-80 object-cover"
+            className="w-full h-64 md:h-80 object-cover transform rotate-90"
           />
-          <button className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 text-white font-medium text-sm transition">
+          <button onClick={openModal} className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 text-white font-medium text-sm transition">
             REQUEST MASTER PLAN LAYOUT
           </button>
         </div>
@@ -33,11 +33,11 @@ const LayoutSection = () => {
         {/* Right Image */}
         <div className="relative group shadow-md overflow-hidden">
           <img
-            src="./Assets/fp.jpg"
+            src="./Assets/fp1.webp"
             alt="Unit Plan"
-            className="w-full h-64 md:h-80 object-cover"
+            className="w-full h-64 md:h-80 object-cover transform rotate-90"
           />
-          <button className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 text-white font-medium text-sm transition">
+          <button onClick={openModal} className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 text-white font-medium text-sm transition">
             REQUEST UNIT PLAN LAYOUT
           </button>
         </div>
