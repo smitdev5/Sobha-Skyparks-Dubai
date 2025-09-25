@@ -133,7 +133,9 @@ export default function Navbar() {
                     duration: 1.5,
                     ease: "easeInOut",
                   }}
-                  className="text-[#997736] text-lg"
+                  className={`text-lg ${
+                    isScrolled ? "text-[#997736]" : "text-white"
+                    }`}
                 >
                   <FaFilePdf />
                 </motion.div>
