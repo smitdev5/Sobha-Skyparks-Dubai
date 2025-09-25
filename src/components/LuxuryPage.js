@@ -17,13 +17,13 @@ const LuxuryPage = () => {
           />
         </div>
         <div className="luxury-text">
-          <h2>
+          <h2 className="font-semibold">
             Palm Jebel Ali Dubai
           </h2>
           <p>
             Discover unmatched luxury at The Palm Jebel Ali by Nakheel, an iconic address offering an exclusive collection of Beach and Coral Villas. Each residence blends modern design with timeless elegance, seamlessly connecting the ocean, sky, and pristine beachfront. Inside, seven spacious ensuite bedrooms, refined living areas, and dedicated spaces for a guard’s house and dual maid’s quarters provide exceptional comfort and versatility. Crafted with meticulous attention to detail, The Palm Jebel Ali redefines opulent living, delivering a lifestyle of sophistication and serenity in one of Dubai’s most prestigious waterfront destinations.
           </p>
-          <button onClick={openModal} className="btn-download">DOWNLOAD BROCHURE</button>
+          <button onClick={openModal} className="mt-4 font-semibold border-2 rounded-md border-[#997736] text-[#997736] hover:text-white px-6 py-2 hover:bg-[#997736] transition">DOWNLOAD BROCHURE</button>
         </div>
       </section>
 

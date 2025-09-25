@@ -49,13 +49,13 @@ export default function GalleryCarousel() {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4">
         {/* Text Section */}
         <div className="space-y-4 text-center md:text-left md:order-1 order-2">
-          <h2 className="luxury-text text-2xl text-[#997736]">Gallery</h2>
+          <h2 className="luxury-text text-2xl font-semibold text-[#997736]">GALLERY</h2>
           <p className="text-gray-600">
             Explore the exquisite gallery of Luxury Launch, showcasing stunning visuals of our
             exclusive amenities, including an infinity pool, gym, yoga deck, landscaped gardens,
             and more – all crafted to offer unmatched comfort, elegance, and everyday indulgence.
           </p>
-          <button onClick={openModal} className="btn-download border border-gray-400 px-6 py-2 hover:bg-gray-100">
+          <button onClick={openModal} className="font-semibold border-2 rounded-md border-[#997736] text-[#997736] hover:text-white px-6 py-2 hover:bg-[#997736] transition">
             DOWNLOAD GALLERY
           </button>
         </div>

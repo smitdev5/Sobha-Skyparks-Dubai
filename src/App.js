@@ -8,6 +8,8 @@ import AmenitiesCarousel from "./components/Amenity";
 import GalleryCarousel from "./components/Gallery";
 import Invest from "./components/Invest";
 import { EnquiryModalProvider } from "./components/EnquiryModal";
+import LocationSection from "./components/Location";
+import LayoutSection from "./components/LayoutSection";
 import "./App.css";
 
 // DemoButton to test modal anywhere
@@ -30,8 +32,10 @@ function AppContent() {
       <Banner />
       <TextCarousel />
       <LuxuryPage />
+      <LayoutSection />
       <AmenitiesCarousel />
       <GalleryCarousel />
+      <LocationSection />
       <Invest />
       <Footer />
 

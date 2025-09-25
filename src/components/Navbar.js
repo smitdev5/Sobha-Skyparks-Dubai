@@ -137,7 +137,9 @@ export default function Navbar() {
                 >
                   <FaFilePdf />
                 </motion.div>
-                <span className="text-[#997736] text-sm sm:text-base">
+                <span className={` text-sm sm:text-base ${
+                  isScrolled ? "text-[#997736]" : "text-white"
+                  }`}>
                   Download Brochure
                 </span>
               </button>

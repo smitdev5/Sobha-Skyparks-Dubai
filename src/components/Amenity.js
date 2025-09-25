@@ -78,13 +78,13 @@ export default function AmenitiesCarousel() {
 
         {/* Text Section */}
         <div className="space-y-4 text-center md:text-left">
-          <h2 className="luxury-text text-[#997736] text-2xl">AMENITIES</h2>
+          <h2 className="luxury-text text-[#997736] font-semibold text-2xl">AMENITIES</h2>
           <p className="text-gray-600">
             Live the high life at Luxury Launch with exclusive amenities like an infinity pool,
             gym, yoga deck, landscaped gardens, and more – crafted to offer unmatched comfort,
             elegance, and everyday indulgence.
           </p>
-          <button onClick={openModal} className="btn-download border border-gray-400 px-6 py-2 hover:bg-gray-100">
+          <button onClick={openModal} className="font-semibold border-2 rounded-md border-[#997736] text-[#997736] hover:text-white px-6 py-2 hover:bg-[#997736] transition">
             DOWNLOAD AMENITIES
           </button>
         </div>

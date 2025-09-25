@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useEnquiryModal } from "./EnquiryModal";
+
 
 const Footer = () => {
   const [showAlert, setShowAlert] = useState(false);
+  const { openModal } = useEnquiryModal();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -160,7 +163,7 @@ const Footer = () => {
             <i className="fas fa-phone-alt text-lg"></i>
             <span className="text-sm mt-1">CALL</span>
           </button>
-          <button className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
+          <button onClick={openModal} className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
             <i className="fas fa-envelope text-lg"></i>
             <span className="text-sm mt-1">ENQUIRY</span>
           </button>
