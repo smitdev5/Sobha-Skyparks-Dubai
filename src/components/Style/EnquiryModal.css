@@ -1,0 +1,18 @@
+/* react-phone-input-2 dark theme fix */
+.react-tel-input .country-list {
+  background-color: #000 !important; /* black dropdown */
+  color: #fff !important;           /* white text */
+  border: 1px solid #333 !important;
+}
+
+.react-tel-input .country-list .country:hover,
+.react-tel-input .country-list .country.highlight {
+  background-color: #333 !important; /* dark gray hover */
+  color: #fff !important;            /* keep text white */
+}
+
+.react-tel-input .country-list .search {
+  background-color: #000 !important; /* search input bg */
+  color: #fff !important;            /* search input text */
+  border: 1px solid #444 !important;
+}
