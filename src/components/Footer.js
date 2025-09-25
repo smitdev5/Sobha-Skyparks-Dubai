@@ -180,7 +180,7 @@ const Footer = () => {
       {/* Fixed Mobile Footer Buttons */}
       <div className="fixed bottom-0 left-0 w-full bg-[#997736] shadow-md lg:hidden">
         <div className="flex justify-around w-full p-2 space-x-2">
-          <button className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
+          <button onClick={openModal} className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
             <i className="fas fa-phone-alt text-lg transform rotate-90"></i>
             <span className="text-sm mt-1">CALL</span>
           </button>
@@ -188,7 +188,7 @@ const Footer = () => {
             <i className="fas fa-envelope text-lg"></i>
             <span className="text-sm mt-1">ENQUIRY</span>
           </button>
-          <button className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
+          <button onClick={openModal} className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
             <i className="fab fa-whatsapp text-lg"></i>
             <span className="text-sm mt-1">WHATSAPP</span>
           </button>

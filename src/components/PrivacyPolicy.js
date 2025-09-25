@@ -7,9 +7,9 @@ export default function PrivacyPolicy() {
         {/* Logo + Phone */}
         <div className="flex md:flex-row flex-col gap-4 items-center justify-between mb-8">
           <img
-            src="../Assets/logo.png"
+            src="../Assets/logo_.webp"
             alt="Logo"
-            className="w-40 h-auto"
+            className="w-44 h-auto"
           />
           <a
             href="tel:+971527195327"
@@ -37,8 +37,7 @@ export default function PrivacyPolicy() {
           <p className="text-lg"> 
             <strong className="text-2xl">PRIVACY POLICY &amp; TERM OF USES</strong>
             <br />
-            Nakheel Bay Villas , (“Nakheel Bay Villas” or “We”) a Real Estate Regulatory Agency (“RERA”) Registered Agent bearing License No: 1359429 . We prioritize your privacy. Our concise Privacy Policy outlines the personal information we collect through our website, including sub-domains and microsites, the purposes of collection we may share it with, and security measures in place. It also informs you about your rights, choices, and how to contact us regarding privacy concerns. We highly recommend reading this Privacy Policy before using services and/or providing personal information.
-          </p>
+            Nova Capital Real Estate LLC, (“Nova Capital Real Estate” or “We”) . We prioritize your privacy. Our concise Privacy Policy outlines the personal information we collect through our website, including sub-domains and microsites, the purposes of collection we may share it with, and security measures in place. It also informs you about your rights, choices, and how to contact us regarding privacy concerns. We highly recommend reading this Privacy Policy before using services and/or providing personal information. </p>
           <p className="text-lg">
             <strong className="text-2xl">INTERPRETATIONS AND DEFINITIONS</strong>
           </p>
@@ -46,11 +45,13 @@ export default function PrivacyPolicy() {
 
 “Data Protection Laws” shall mean any applicable law for the time being in force relating to the processing of Data.
 
-“Nakheel Bay Villas” and its subsidiaries, affiliates and associate companies. “User or You” shall mean the natural person who accesses our website/pages or Platform.</p>
+ “User or You” shall mean the natural person who accesses our website/pages or Platform.
+
+</p>
           <p className="text-lg">
             <strong className="text-2xl">WEBSITE CONTENT OVERVIEW:</strong>
             <br />
-            The contents of this landing page ...The contents of this landing page, containing details of properties, property photos, costs, and availability, are provided for informational and illustrative purposes only. This information is subject to change at any time. Users are hereby advised that the actual properties may differ from what is shown in photos and cost on the website and pages, and as such, no claims shall be entertained based on such representations.
+            The contents of this landing page, containing details of properties, property photos, costs, and availability, are provided for informational and illustrative purposes only. This information is subject to change at any time. Users are hereby advised that the actual properties may differ from what is shown in photos and cost on the website and pages, and as such, no claims shall be entertained based on such representations.
 Uses of Developer Information:
 All images, cost descriptions, logos, and other project materials featured on this landing page are presented in accordance with the respective project developer or its licensors. We are in legal agreements and established legal relationships with the said respective developer, thereby possessing the authority to advertise, market for sale, and generate leads for the respective project.
 
@@ -65,8 +66,8 @@ All images, cost descriptions, logos, and other project materials featured on th
           <p className="text-lg">
             While visiting to this website, we may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:
 
-Email address:info@nakheelproperty.ae
-Address: Icon Tower, Barsha Heights Dubai-UAE
+Email address:info@novaproperty.ae
+Address: Icon Tower, Barsha Heights, Dubai-UAE
 We may use Personal Data for the following purposes:
 
 To provide and maintain our Service, including to monitor the usage of our Service.
@@ -129,7 +130,7 @@ Protect against legal liability.
           <p className="text-lg">
             <strong className="text-2xl">CONTACT US</strong>
             <br />
-            To request to review, update, or delete your personal information or to otherwise reach us, please submit a request by e-mailing us 
+            To request to review, update, or delete your personal information or to otherwise reach us, please submit a request by e-mailing us  
             at <strong className="text-2xl">info@nakheelproperty.ae</strong>
           </p>
         </div>

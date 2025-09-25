@@ -7,11 +7,10 @@ function BrochureButton({ isScrolled, onClick, className = '' }) {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-2 border px-4 py-2 rounded-full font-bold shadow-md hover:shadow-lg transition ${className} ${
-        isScrolled
-          ? 'bg-white border-gray-300 text-[#997736]'
-          : 'bg-transparent border-white text-white'
-      }`}
+      className={`flex items-center gap-2 border px-4 py-2 rounded-full font-bold shadow-md hover:shadow-lg transition ${className} ${isScrolled
+        ? 'bg-white border-gray-300 text-[#997736]'
+        : 'bg-transparent border-white text-white'
+        }`}
     >
       <motion.div
         animate={{ y: [0, -6, 0] }}
@@ -25,9 +24,8 @@ function BrochureButton({ isScrolled, onClick, className = '' }) {
         <FaFilePdf />
       </motion.div>{' '}
       <span
-        className={`text-sm sm:text-base ${
-          isScrolled ? 'text-[#997736]' : 'text-white'
-        }`}
+        className={`text-sm sm:text-base ${isScrolled ? 'text-[#997736]' : 'text-white'
+          }`}
       >
         Download Brochure{' '}
       </span>{' '}
@@ -62,11 +60,10 @@ export default function Navbar() {
         referrerPolicy="no-referrer"
       />
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white shadow-md text-[#997736]'
-            : 'bg-transparent text-white'
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-white shadow-md text-[#997736]'
+          : 'bg-transparent text-white'
+          }`}
       >
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           <div className="space-x-8 flex items-center">
@@ -88,11 +85,10 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`transition-colors duration-300 ${
-                    isScrolled
-                      ? 'hover:text-[#997736]/70'
-                      : 'hover:text-[#997736]'
-                  }`}
+                  className={`transition-colors duration-300 ${isScrolled
+                    ? 'hover:text-[#997736]/70'
+                    : 'hover:text-[#997736]'
+                    }`}
                 >
                   {' '}
                   {item.label}{' '}
@@ -139,9 +135,8 @@ export default function Navbar() {
         </div>
         {/* Mobile Menu */}{' '}
         <div
-          className={`fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          } lg:hidden p-8 pt-20`}
+          className={`fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            } lg:hidden p-8 pt-20`}
         >
           <div className="flex flex-col space-y-6 text-xl text-[#997736] text-center font-semibold">
             {' '}
@@ -168,7 +163,7 @@ export default function Navbar() {
             <BrochureButton
               isScrolled={isScrolled}
               onClick={openModal}
-              className="mx-auto"
+              className="mx-auto text-[#997736]"
             />
           </div>{' '}
         </div>{' '}
@@ -189,13 +184,27 @@ export default function Navbar() {
           </span>{' '}
           <i className="fas fa-envelope text-lg text-[#997736]" />
         </button>
-        <button className="flex items-center justify-end px-4 py-2 bg-white text-gray-800 rounded-l-full shadow-lg hover:bg-gray-100 transition-colors group">
+        <button
+          onClick={() => {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="flex items-center justify-end px-4 py-2 bg-white text-gray-800 rounded-l-full shadow-lg hover:bg-gray-100 transition-colors group">
           <span className="mr-2 text-sm text-[#997736] font-semibold whitespace-nowrap group-hover:block hidden">
             CALL{' '}
           </span>{' '}
           <i className="fas fa-phone-alt text-lg text-[#997736]" />
         </button>
-        <button className="flex items-center justify-end px-4 py-2 bg-white text-gray-800 rounded-l-full shadow-lg hover:bg-gray-100 transition-colors group">
+        <button
+          onClick={() => {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="flex items-center justify-end px-4 py-2 bg-white text-gray-800 rounded-l-full shadow-lg hover:bg-gray-100 transition-colors group">
           <span className="mr-2 text-sm text-[#997736] font-semibold whitespace-nowrap group-hover:block hidden">
             WHATSAPP{' '}
           </span>{' '}
