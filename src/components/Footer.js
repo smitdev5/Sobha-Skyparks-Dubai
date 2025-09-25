@@ -1,155 +1,157 @@
-import React, { useState } from "react";
+// components/Footer.jsx
+import React from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useEnquiryModal } from "./EnquiryModal";
+import { useLeadForm } from "../hooks/useLeadForm";
 
 
 const Footer = () => {
-  const [showAlert, setShowAlert] = useState(false);
   const { openModal } = useEnquiryModal();
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setShowAlert(true);
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log("Form Submitted:", data);
-    e.target.reset();
-  };
-  const [phone, setPhone] = useState("");
+  const {
+    phone,
+    setPhone,
+    dialCode,
+    isoCode,
+    loading,
+    success,
+    setSuccess,
+    submitLead,
+    setDialCode,
+    setIsoCode
+  } = useLeadForm();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const formData = {
-  //     name: e.target.name.value,
-  //     phone,
-  //   };
-  //   console.log("Form Submitted:", formData);
-  //   onClose();
-  // };
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      name: e.target.name.value,
+    };
+    const result = await submitLead(formData);
+    if (result) {
+      e.target.reset();
+    }
+  };
 
   return (
     <div>
       <footer id="contact" className="w-full bg-[#997736] p-6 sm:p-8 lg:p-10">
         <div className="container mx-auto">
-          {/* Desktop Footer Content */}
+          {/* Desktop Footer */}
           <div className="hidden lg:flex flex-col items-center">
             <h2 className="text-white text-2xl font-bold mb-4">ENQUIRE NOW</h2>
             <form
               onSubmit={handleFormSubmit}
-              className="flex items-center justify-center space-x-4 w-full max-w-4xl"
+              className="flex items-end justify-center space-x-4 w-full max-w-4xl"
             >
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="p-3 border border-black rounded-lg flex-1 min-w-0"
-                required
-              />
-
-              <div className="relative flex items-center p-3 rounded-lg border border-black flex-1 min-w-0">
-                {/* Country Code Dropdown with Flag */}
-                <div className="custom-select-wrapper relative">
-                  <div className="custom-select flex items-center">
-                    <PhoneInput
-  country={"in"}
-  value={phone}
-  onChange={setPhone}
-  inputProps={{
-    name: "phone",
-    required: true,
-  }}
-  containerClass="w-full" // makes it responsive
-  inputClass="!w-full !bg-transparent !text-white !py-3 !pl-12 !pr-3 !rounded-md !border !border-gray-600 focus:!border-[#997736] !outline-none"
-  buttonClass="!bg-gray-800 !border-none !rounded-l-md"
-  dropdownClass="!bg-black !text-white"
-  searchClass="!bg-black !text-white"
-  enableSearch={true} // optional: search inside dropdown
-/>
-                  </div>
-                </div>
+              {/* Name input */}
+              <div className="flex-1 flex flex-col">
+                <label className="text-white mb-1 text-sm font-medium">
+                  Name
+                </label>
                 <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Mobile Number"
-                  className="flex-1 border border-black bg-transparent border-none focus:outline-none"
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  className="h-[48px] p-3 rounded-lg bg-white border border-gray-300 focus:border-[#997736] outline-none w-full"
                   required
                 />
               </div>
 
-              {/* <input type="email" name="email" placeholder="Email" className="p-3 rounded-lg flex-1 min-w-0" /> */}
+              {/* Phone input */}
+              <div className="flex-1 flex flex-col">
+                <label className="text-white mb-1 text-sm font-medium">
+                  Phone Number
+                </label>
+                <PhoneInput
+                  country={"in"}
+                  value={phone}
+                  onChange={(value, country) => {
+                    console.log(value, country)
+                    
+                    setPhone(value);
+                    setDialCode(`+${country?.dialCode}`);
+                    setIsoCode(country?.countryCode);
+                  }}
+                  inputProps={{ name: "phone", required: true }}
+                  containerClass="w-full"
+                  inputClass="!w-full !h-[48px] !pl-14 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
+                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-3"
+                  dropdownClass="!bg-white !text-black"
+                  searchClass="!bg-white !text-black"
+                  enableSearch={true}
+                  placeholder="Enter phone number"
+                />
+              </div>
+
               <button
                 type="submit"
-                className="bg-[#b38e5d] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#a07e4d] transition-colors"
+                className="bg-[#b38e5d] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#a07e4d] transition-colors h-fit"
+                disabled={loading}
               >
-                Enquire
+                {loading ? "Submitting..." : "Enquire"}
               </button>
             </form>
-            <p className="text-gray-400 text-sm mt-4 text-center max-w-2xl">
+
+            <p className="text-gray-200 text-sm mt-4 text-center max-w-2xl">
               I Consent to the Processing of Provided Data According to Privacy
               Policy | Terms & Conditions. I Authorize Preferred Partner and its
               representatives to Call, SMS, Email or WhatsApp Us About its
               Products and Offers. This Consent Overrides Any Registration for
-              DNC/DNCR.
+              DNC / DNCR.
             </p>
           </div>
 
           {/* Mobile/Tablet Footer */}
           <div className="lg:hidden flex flex-col items-center space-y-4">
             <h2 className="text-white text-2xl font-bold">ENQUIRE NOW</h2>
-            <form
-              onSubmit={handleFormSubmit}
-              className="w-full space-y-4 pb-20" // <-- padding so buttons don’t overlap
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="w-full p-3 rounded-lg bg-white"
-                required
-              />
-
-              {/* Mobile Country Code/Phone Field */}
-              <div className="relative flex items-center p-3 rounded-lg bg-white">
-                <div className="custom-select-wrapper relative">
-                  <div className="custom-select flex items-center">
-                    <img
-                      src="https://flagcdn.com/in.svg"
-                      alt="Indian Flag"
-                      className="h-4 w-6 mr-2 flag-icon"
-                    />
-                    <select
-                      name="country_code"
-                      className="bg-transparent border-none focus:outline-none"
-                    >
-                      <option value="+91">+91</option>
-                      <option value="+1">+1</option>
-                      <option value="+44">+44</option>
-                    </select>
-                  </div>
-                </div>
+            <form onSubmit={handleFormSubmit} className="w-full space-y-4 pb-20">
+              <div className="flex flex-col">
+                <label className="text-white mb-1 text-sm font-medium">Name</label>
                 <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Mobile Number"
-                  className="flex-1 bg-transparent border-none focus:outline-none"
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  className="h-[48px] w-full p-3 rounded-lg bg-white border border-gray-300 focus:border-[#997736] outline-none"
                   required
                 />
               </div>
 
-              {/* <input type="email" name="email" placeholder="Email" className="w-full p-3 rounded-lg bg-white" /> */}
-              <p className="text-gray-400 text-xs text-center max-w-2xl mt-2">
-                I Consent to the Processing of Provided Data According to
-                Privacy Policy | Terms & Conditions. I Authorize Preferred
-                Partner and its representatives to Call, SMS, Email or WhatsApp
-                Us About its Products and Offers. This Consent Overrides Any
-                Registration for DNC/DNCR.
+              <div className="flex flex-col">
+                <label className="text-white mb-1 text-sm font-medium">Phone Number</label>
+                <PhoneInput
+                  country={"in"}
+                  value={phone}
+                  onChange={(value, country) => {
+                    setPhone(value);
+                    setDialCode(`+${country.dialCode}`);
+                    setIsoCode(country.countryCode);
+                  }}
+                  inputProps={{ name: "phone", required: true }}
+                  containerClass="w-full"
+                  inputClass="!w-full !h-[48px] !pl-14 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
+                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-3"
+                  dropdownClass="!bg-white !text-black"
+                  searchClass="!bg-white !text-black"
+                  enableSearch={true}
+                  placeholder="Enter phone number"
+                />
+              </div>
+
+              <p className="text-gray-200 text-xs text-center max-w-2xl mt-2">
+                I Consent to the Processing of Provided Data According to Privacy
+                Policy | Terms & Conditions. I Authorize Preferred Partner and its
+                representatives to Call, SMS, Email or WhatsApp Us About its
+                Products and Offers. This Consent Overrides Any Registration for
+                DNC / DNCR.
               </p>
+
               <button
                 type="submit"
                 className="w-full bg-[#b38e5d] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#a07e4d] transition-colors"
+                disabled={loading}
               >
-                Enquire
+                {loading ? "Submitting..." : "Enquire"}
               </button>
             </form>
           </div>
@@ -174,14 +176,12 @@ const Footer = () => {
         </div>
       </div>
 
-      {showAlert && (
+      {success && (
         <div className="alert-modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg text-center max-w-sm">
-            <p className="mb-4">
-              Thank you for your inquiry! We will get back to you shortly.
-            </p>
+            <p className="mb-4">Thank you for your inquiry! We will get back to you shortly.</p>
             <button
-              onClick={() => setShowAlert(false)}
+              onClick={() => setSuccess(false)}
               className="bg-[#b38e5d] text-white px-6 py-2 rounded-lg hover:bg-[#a07e4d] transition-colors"
             >
               OK
