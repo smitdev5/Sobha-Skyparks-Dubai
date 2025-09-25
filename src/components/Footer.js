@@ -94,11 +94,7 @@ const Footer = () => {
             </form>
 
             <p className="text-gray-200 text-sm mt-4 text-center max-w-2xl">
-              I Consent to the Processing of Provided Data According to Privacy
-              Policy | Terms & Conditions. I Authorize Preferred Partner and its
-              representatives to Call, SMS, Email or WhatsApp Us About its
-              Products and Offers. This Consent Overrides Any Registration for
-              DNC / DNCR.
+              I consent to the processing of provided data according to the Privacy Policy | Terms & Conditions. I authorize Palm Jebel Ali Dubai and its representatives to call, SMS, email, or WhatsApp me about its products and offers. This consent overrides any registration for DNC / DNCR.
             </p>
           </div>
 
@@ -140,11 +136,7 @@ const Footer = () => {
               </div>
 
               <p className="text-gray-200 text-xs text-center max-w-2xl mt-2">
-                I Consent to the Processing of Provided Data According to Privacy
-                Policy | Terms & Conditions. I Authorize Preferred Partner and its
-                representatives to Call, SMS, Email or WhatsApp Us About its
-                Products and Offers. This Consent Overrides Any Registration for
-                DNC / DNCR.
+                I consent to the processing of provided data according to the Privacy Policy | Terms & Conditions. I authorize Palm Jebel Ali Dubai and its representatives to call, SMS, email, or WhatsApp me about its products and offers. This consent overrides any registration for DNC / DNCR.
               </p>
 
               <button
