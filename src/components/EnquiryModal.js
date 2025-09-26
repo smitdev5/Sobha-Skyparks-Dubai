@@ -5,7 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "../components/Style/EnquiryModal.css";
 import { useLeadForm } from "../hooks/useLeadForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Context for global modal access
 const EnquiryModalContext = createContext();
@@ -15,7 +15,7 @@ export const EnquiryModalProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
-
+  
   return (
     <EnquiryModalContext.Provider value={{ openModal, closeModal }}>
       {children}
@@ -25,6 +25,7 @@ export const EnquiryModalProvider = ({ children }) => {
 };
 
 const EnquiryModal = ({ onClose }) => {
+  const navigate = useNavigate();
   const {
     phone,
     setPhone,
@@ -49,6 +50,8 @@ const EnquiryModal = ({ onClose }) => {
     if (result) {
       e.target.reset();
       setConsentChecked(false);
+      onClose();
+      navigate("/thank-you");
     }
   };
 
@@ -138,7 +141,7 @@ const EnquiryModal = ({ onClose }) => {
       </div>
 
       {/* Thank-you popup */}
-      {success && (
+      {/* {success && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg text-center max-w-sm">
             <p className="mb-4 text-black">
@@ -155,7 +158,7 @@ const EnquiryModal = ({ onClose }) => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

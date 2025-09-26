@@ -4,10 +4,11 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useEnquiryModal } from "./EnquiryModal";
 import { useLeadForm } from "../hooks/useLeadForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const { openModal } = useEnquiryModal();
+  const navigate = useNavigate();   // initialize navigate
 
   const {
     phone,
@@ -35,6 +36,7 @@ const Footer = () => {
     if (result) {
       e.target.reset();
       setConsentChecked(false);
+      navigate("/thank-you"); 
     }
   };
 
@@ -152,14 +154,16 @@ const Footer = () => {
                     setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
                   }}
                   inputProps={{ name: "phone", required: true }}
-                  containerClass="w-full relative"   // ✅ relative so dropdown positions properly
-                  inputClass="!w-full !h-[48px] !pl-12 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
-                  buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-1"
-                  dropdownClass="!bg-white !text-black !z-[9999] !absolute"   // ✅ keep dropdown above
+                  containerClass="w-full "   // ✅ relative so dropdown positions properly
+                  // inputClass="!w-full !h-[48px] !pl-12 !pr-3 !rounded-lg !bg-white !text-black !border !border-gray-300 focus:!border-[#997736] !outline-none placeholder:!text-gray-400"
+                  // buttonClass="!h-[48px] !flex !items-center !justify-center !bg-gray-200 !border-none !rounded-l-lg !px-1"
+                  inputClass="!w-full !bg-white !text-black !py-3 !pl-12 !pr-3 !rounded-md !border !border-gray-300 focus:!border-[#997736] !outline-none"
+                  buttonClass="!bg-gray-800 !border-none !rounded-l-md !bg-gray-200"
+                  dropdownClass="!bg-white !text-black "   // ✅ keep dropdown above !z-[9999] !absolute
                   searchClass="!bg-white !text-black"
                   enableSearch={true}
-                  placeholder="Enter phone number"
-                  dropdownStyle={{ position: "absolute", zIndex: 9999 }}  // ✅ important
+                  // placeholder="Enter phone number"
+                  // dropdownStyle={{ position: "absolute", zIndex: 9999 }}  // ✅ important
                 />
 
               </div>

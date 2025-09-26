@@ -8,7 +8,7 @@ export default function Banner() {
     >
       {/* Background Video */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover transformr rotate-180"
         autoPlay
         muted
         loop

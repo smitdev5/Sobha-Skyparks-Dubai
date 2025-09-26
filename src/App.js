@@ -12,6 +12,7 @@ import { EnquiryModalProvider } from "./components/EnquiryModal";
 import LocationSection from "./components/Location";
 import LayoutSection from "./components/LayoutSection";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import ThankYouPage from "./components/ThankyouPage";
 import "./App.css";
 
 // DemoButton to test modal anywhere
@@ -57,7 +58,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppContent />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* <Route path="/terms-and-conditions" element={<TermsAndConditions />} /> */}
+          <Route path="/thank-you" element={<ThankYouPage />} />
         </Routes>
       {/* </Router> */}
     </EnquiryModalProvider>

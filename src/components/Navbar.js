@@ -163,7 +163,7 @@ export default function Navbar() {
             <BrochureButton
               isScrolled={isScrolled}
               onClick={openModal}
-              className="mx-auto text-[#997736]"
+              className="mx-auto text-[#997736] border border-[#997736]"
             />
           </div>{' '}
         </div>{' '}
