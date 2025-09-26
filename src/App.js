@@ -60,7 +60,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
         </Routes>
-      {/* </Router> */}
+      {/* </Router>/ */}
     </EnquiryModalProvider>
   );
 }

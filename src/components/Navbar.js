@@ -3,14 +3,18 @@ import { useEnquiryModal } from './EnquiryModal';
 import { motion } from 'framer-motion';
 import { FaFilePdf } from 'react-icons/fa';
 
-function BrochureButton({ isScrolled, onClick, className = '' }) {
+function BrochureButton({ isScrolled, onClick, className = '', variant = 'default' }) {
+  const isMobileMenu = variant === 'mobile';
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-2 border px-4 py-2 rounded-full font-bold shadow-md hover:shadow-lg transition ${className} ${isScrolled
-        ? 'bg-white border-gray-300 text-[#997736]'
-        : 'bg-transparent border-white text-white'
-        }`}
+      className={`flex items-center gap-2 border px-4 py-2 rounded-full font-bold shadow-md hover:shadow-lg transition ${className} ${
+        isMobileMenu
+          ? 'bg-transparent border-[#997736] text-[#997736]' // ✅ Mobile override
+          : isScrolled
+            ? 'bg-white border-gray-300 text-[#997736]'
+            : 'bg-transparent border-white text-white'
+      }`}
     >
       <motion.div
         animate={{ y: [0, -6, 0] }}
@@ -19,13 +23,14 @@ function BrochureButton({ isScrolled, onClick, className = '' }) {
           duration: 1.5,
           ease: 'easeInOut',
         }}
-        className={`${isScrolled ? 'text-[#997736]' : 'text-white'} text-lg`}
+        className={`${isMobileMenu ? 'text-[#997736]' : isScrolled ? 'text-[#997736]' : 'text-white'} text-lg`}
       >
         <FaFilePdf />
       </motion.div>{' '}
       <span
-        className={`text-sm sm:text-base ${isScrolled ? 'text-[#997736]' : 'text-white'
-          }`}
+        className={`text-sm sm:text-base ${
+          isMobileMenu ? 'text-[#997736]' : isScrolled ? 'text-[#997736]' : 'text-white'
+        }`}
       >
         Download Brochure{' '}
       </span>{' '}
@@ -163,7 +168,8 @@ export default function Navbar() {
             <BrochureButton
               isScrolled={isScrolled}
               onClick={openModal}
-              className="mx-auto text-[#997736] border border-[#997736]"
+              variant="mobile"
+              className="mx-auto "
             />
           </div>{' '}
         </div>{' '}
