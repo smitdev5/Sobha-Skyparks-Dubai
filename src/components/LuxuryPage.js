@@ -12,7 +12,7 @@ const LuxuryPage = () => {
       <section className="luxury-section">
         <div className="luxury-image">
           <img
-            src="../Assets/ov.jpg"
+            src="../Assets/luxury.jpg"
             alt="Luxury View"
           />
         </div>
