@@ -17,21 +17,27 @@ const ThankYouPage = () => {
         </p>
         <p className="text-gray-700 mb-6">
           Book a free, no-obligation property viewing with our team.{" "}
-          <button
+          {/* <button
             onClick={() => setIsModalOpen(true)}
             className="text-[#997736] font-semibold underline hover:text-[#b38e5d]"
           >
             Click here
-          </button>{" "}
-          to schedule your preferred date and time.
+          </button>{" "} */}
+          Click below to schedule your preferred date and time.
         </p>
+        <button
+            onClick={() => setIsModalOpen(true)}
+            className="text-[#ffffff] bg-[#997736] px-6 py-3 rounded-lg font-semibold mb-6 hover:bg-[#b38e5d]"
+          >
+            Schedule Date & Time
+        </button>{" "}
         <p className="text-gray-700 mb-8">
           Thank you again for registering—let’s make your property journey a success!
         </p>
 
         <Link
           to="/"
-          className="inline-block bg-[#997736] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b38e5d] transition-colors"
+          className="inline-block font-semibold border-2 rounded-md border-[#997736] text-[#997736] hover:text-white px-6 py-2 hover:bg-[#997736] transition"
         >
           Back to Home
         </Link>

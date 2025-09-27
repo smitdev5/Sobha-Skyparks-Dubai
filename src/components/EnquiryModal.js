@@ -51,7 +51,7 @@ const EnquiryModal = ({ onClose }) => {
       e.target.reset();
       setConsentChecked(false);
       onClose();
-      navigate("/thank-you");
+      navigate("/thankyou");
     }
   };
 
@@ -98,6 +98,14 @@ const EnquiryModal = ({ onClose }) => {
               dropdownClass="!bg-black !text-white"
               searchClass="!bg-black !text-white"
               enableSearch={true}
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full px-4 py-3 rounded-md bg-transparent border border-gray-600 focus:border-[#997736] outline-none"
+              // required
             />
 
             {/* Consent Text */}

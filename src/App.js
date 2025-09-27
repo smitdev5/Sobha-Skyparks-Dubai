@@ -13,7 +13,10 @@ import LocationSection from "./components/Location";
 import LayoutSection from "./components/LayoutSection";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import ThankYouPage from "./components/ThankyouPage";
+import PriceSection from "./components/Pricing";
+import PaymentPlan from "./components/PaymentPlan";
 import "./App.css";
+import Waitlist from "./components/Waitlist";
 
 // DemoButton to test modal anywhere
 // function DemoButton() {
@@ -35,10 +38,13 @@ function AppContent() {
       <Banner />
       <TextCarousel />
       <LuxuryPage />
+      <PriceSection />
+      <PaymentPlan />
       <LayoutSection />
       <AmenitiesCarousel />
       <GalleryCarousel />
       <LocationSection />
+      <Waitlist />
       <Invest />
       <Footer />
 
@@ -58,7 +64,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppContent />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/thank-you" element={<ThankYouPage />} />
+          <Route path="/thankyou" element={<ThankYouPage />} />
         </Routes>
       {/* </Router>/ */}
     </EnquiryModalProvider>

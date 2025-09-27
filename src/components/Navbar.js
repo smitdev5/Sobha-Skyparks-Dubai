@@ -81,6 +81,7 @@ export default function Navbar() {
               {[
                 { href: '#home', label: 'HOME' },
                 { href: '#about', label: 'ABOUT' },
+                { herf: '#price', label: 'PRICE'},
                 { href: '#site-floor-plans', label: 'SITE & FLOOR PLANS' },
                 { href: '#amenities', label: 'AMENITIES' },
                 { href: '#gallery', label: 'GALLERY' },
@@ -148,6 +149,7 @@ export default function Navbar() {
             {[
               { href: '#home', label: 'HOME' },
               { href: '#about', label: 'ABOUT' },
+              { herf: '#price', label: 'PRICE'},
               { href: '#site-floor-plans', label: 'SITE & FLOOR PLANS' },
               { href: '#amenities', label: 'AMENITIES' },
               { href: '#gallery', label: 'GALLERY' },

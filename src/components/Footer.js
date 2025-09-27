@@ -36,7 +36,7 @@ const Footer = () => {
     if (result) {
       e.target.reset();
       setConsentChecked(false);
-      navigate("/thank-you"); 
+      navigate("/thankyou"); 
     }
   };
 
@@ -49,7 +49,7 @@ const Footer = () => {
             <h2 className="text-white text-2xl font-bold mb-4">ENQUIRE NOW</h2>
             <form
               onSubmit={handleFormSubmit}
-              className="flex items-end justify-center space-x-4 w-full max-w-4xl"
+              className="flex items-end justify-center space-x-4 w-full max-w-5xl"
             >
               {/* Name input */}
               <div className="flex-1 flex flex-col">
@@ -87,6 +87,19 @@ const Footer = () => {
                   searchClass="!bg-white !text-black"
                   enableSearch={true}
                   placeholder="Enter phone number"
+                />
+              </div>
+
+              <div className="flex-1 flex flex-col">
+                <label className="text-white mb-1 text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  className="h-[48px] p-3 rounded-lg bg-white border border-gray-300 focus:border-[#997736] outline-none w-full"
+                  // required
                 />
               </div>
 
@@ -168,6 +181,17 @@ const Footer = () => {
 
               </div>
 
+              <div className="flex flex-col">
+                <label className="text-white mb-1 text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  className="h-[48px] w-full p-3 rounded-lg bg-white border border-gray-300 focus:border-[#997736] outline-none"
+                  // required
+                />
+              </div>
+
               <div className=" flex items-start space-x-1 text-gray-200 text-xs text-center max-w-2xl mt-2">
                 <input
                   type="checkbox"
@@ -208,7 +232,7 @@ const Footer = () => {
       </footer>
 
       {/* Fixed Mobile Footer Buttons */}
-      <div className="fixed bottom-0 left-0 w-full bg-[#997736] shadow-md lg:hidden">
+      <div className="fixed bottom-0 left-0 w-full bg-[#997736] shadow-md lg:hidden z-50">
         <div className="flex justify-around w-full p-2 space-x-2">
           <button onClick={openModal} className="flex-1 flex flex-col items-center p-2 rounded-lg bg-[#b38e5d] text-white hover:bg-[#a07e4d] transition-colors">
             <i className="fas fa-phone-alt text-lg transform rotate-90"></i>
