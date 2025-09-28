@@ -1,5 +1,5 @@
 // hooks/useLeadForm.js
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import { getUserIP } from "../utils";
 import { EMAIL_JS_PUBLIC_KEY, EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, PROJECT_NAME } from "../constants";
@@ -14,6 +14,26 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [numberWithoutCountryCode,setNumberWithoutCountryCode] = useState('')
+
+    // 🔹 Detect user country from IP and set default iso/dialCode
+  useEffect(() => {
+    const detectCountry = async () => {
+      try {
+        const res = await fetch("https://ipapi.co/json/"); // or ipinfo.io/json
+        const data = await res.json();
+        if (data?.country_code && data?.country_calling_code) {
+          setIsoCode(data.country_code.toLowerCase()); // e.g. "ae"
+          setDialCode(data.country_calling_code.replace("+", "")); // e.g. "971"
+        }
+      } catch (err) {
+        console.error("Country detection failed", err);
+        // fallback → India
+        setIsoCode("in");
+        setDialCode("91");
+      }
+    };
+    detectCountry();
+  }, []);
 
   const submitLead = async (formData) => {
     setLoading(true);

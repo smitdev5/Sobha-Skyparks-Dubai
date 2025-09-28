@@ -13,7 +13,7 @@ const Waitlist = () => {
                     <span classname="">for Early Premium Units.</span>
                 </h1>
                 <p className="text-white text-sm sm:text-base md:text-xl mb-8">
-                    Book a call with our directors to have a full understanding and make an informed decision
+                    Book a call with our experts to have a full understanding and make an informed decision
                 </p>
                 <button onClick={openModal} className="font-semibold border-2 rounded-md border-[#997736] text-[#997736] hover:text-white px-6 py-2 hover:bg-[#997736] transition">
                     GET AHEAD ON THE WAITLIST

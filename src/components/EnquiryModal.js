@@ -92,7 +92,7 @@ const EnquiryModal = ({ onClose }) => {
 
             {/* Phone Input */}
             <PhoneInput
-              country={"in"}
+              country={isoCode || "in"}
               value={phone}
               onChange={(value, country) => {
                 setPhone(value);

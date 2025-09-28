@@ -71,7 +71,7 @@ const Footer = () => {
                   Phone Number
                 </label>
                 <PhoneInput
-                  country={"in"}
+                  country={isoCode || "in"}
                   value={phone}
                   onChange={(value, country) => {
                     setPhone(value);
@@ -159,7 +159,7 @@ const Footer = () => {
               <div className="flex flex-col">
                 <label className="text-white mb-1 text-sm font-medium">Phone Number</label>
                 <PhoneInput
-                  country={"in"}
+                  country={isoCode || "in"}
                   value={phone}
                   onChange={(value, country) => {
                     setPhone(value);
