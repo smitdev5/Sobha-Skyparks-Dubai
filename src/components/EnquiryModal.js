@@ -15,7 +15,7 @@ export const EnquiryModalProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
-  
+
   return (
     <EnquiryModalContext.Provider value={{ openModal, closeModal }}>
       {children}
@@ -40,10 +40,19 @@ const EnquiryModal = ({ onClose }) => {
     setNumberWithoutCountryCode
   } = useLeadForm();
 
-   const [consentChecked, setConsentChecked] = useState(true);
+  const [consentChecked, setConsentChecked] = useState(true);
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ Phone Validation
+    if (!phone || phone.replace(/\D/g, "").length < 10) {
+      setPhoneError("Please enter a valid 10-digit phone number");
+      return;
+    }
+    setPhoneError("");
+
     if (!consentChecked) return;
     const formData = { name: e.target.name.value };
     const result = await submitLead(formData, e.target);
@@ -91,13 +100,14 @@ const EnquiryModal = ({ onClose }) => {
                 setIsoCode(country.countryCode);
                 setNumberWithoutCountryCode(value.replace(country.dialCode, ""));
               }}
-              inputProps={{ name: "phone", required: true }}
+              inputProps={{ name: "phone", required: true, id: "phone" }}
               containerClass="w-full"
               inputClass="!w-full !bg-transparent !text-white !py-3 !pl-12 !pr-3 !rounded-md !border !border-gray-600 focus:!border-[#997736] !outline-none"
               buttonClass="!bg-gray-800 !border-none !rounded-l-md"
               dropdownClass="!bg-black !text-white"
               searchClass="!bg-black !text-white"
               enableSearch={true}
+              required
             />
 
             <input
@@ -105,7 +115,7 @@ const EnquiryModal = ({ onClose }) => {
               name="email"
               placeholder="Email"
               className="w-full px-4 py-3 rounded-md bg-transparent border border-gray-600 focus:border-[#997736] outline-none"
-              // required
+            // required
             />
 
             {/* Consent Text */}

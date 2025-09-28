@@ -87,6 +87,7 @@ const Footer = () => {
                   searchClass="!bg-white !text-black"
                   enableSearch={true}
                   placeholder="Enter phone number"
+                  required
                 />
               </div>
 
@@ -175,6 +176,7 @@ const Footer = () => {
                   dropdownClass="!bg-white !text-black "   // ✅ keep dropdown above !z-[9999] !absolute
                   searchClass="!bg-white !text-black"
                   enableSearch={true}
+                  required
                   // placeholder="Enter phone number"
                   // dropdownStyle={{ position: "absolute", zIndex: 9999 }}  // ✅ important
                 />
