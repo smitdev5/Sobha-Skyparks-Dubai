@@ -54,13 +54,13 @@ const EnquiryModal = ({ onClose }) => {
     setPhoneError("");
 
     if (!consentChecked) return;
-    const formData = { name: e.target.name.value };
+    const formData = { name: e.target.name.value, email: e.target.email.value};
     const result = await submitLead(formData, e.target);
     if (result) {
       e.target.reset();
       setConsentChecked(false);
       onClose();
-      navigate("/thankyou");
+      navigate("/thankyou.html");
     }
   };
 

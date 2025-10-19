@@ -30,13 +30,14 @@ const Footer = () => {
     e.preventDefault();
     if (!consentChecked) return;
     const formData = {
-      name: e.target.name.value,
+      name: e.target.name.value, 
+      email: e.target.email.value,
     };
     const result = await submitLead(formData, e?.target);
     if (result) {
       e.target.reset();
       setConsentChecked(false);
-      navigate("/thankyou"); 
+      navigate("/thankyou.html"); 
     }
   };
 
@@ -251,7 +252,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {success && (
+      {/* {success && (
         <div className="alert-modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg text-center max-w-sm">
             <p className="mb-4">Thank you for your enquiry! We will get back to you shortly.</p>
@@ -263,7 +264,7 @@ const Footer = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

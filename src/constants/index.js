@@ -1,4 +1,4 @@
-export const PROJECT_NAME = 'Palm jebel ali dubai'
+export const PROJECT_NAME = 'Sobha Skyparks Dubai'
 
 export const EMAIL_JS_PUBLIC_KEY = "-SU1cSsz3-T2DV9yD"
 

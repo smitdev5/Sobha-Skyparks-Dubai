@@ -13,9 +13,9 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
   const [isoCode, setIsoCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [numberWithoutCountryCode,setNumberWithoutCountryCode] = useState('')
+  const [numberWithoutCountryCode, setNumberWithoutCountryCode] = useState('')
 
-    // 🔹 Detect user country from IP and set default iso/dialCode
+  // 🔹 Detect user country from IP and set default iso/dialCode
   useEffect(() => {
     const detectCountry = async () => {
       try {
@@ -82,18 +82,22 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
         source: "website",
         user_ip: userIP,
         organization_name: "org_1",
+        email: formData?.email ?? "N/A",
         ...trackingData,
       };
+      console.log("📦 Lead Payload Sent to Backend:", formData);
 
       // 1. Send lead to backend API
-      await fetch("https://backend-0w4b.onrender.com/api/leads/create_lead", {
+      const backendResponse = await fetch("https://backend-0w4b.onrender.com/api/leads/create_lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      const backendData = await backendResponse.json();
+      console.log("✅ Backend Lead Response:", backendData);
 
       // 2. Send lead to EmailJS in fixed format
-      await emailjs.send(
+      const emailResponse = await emailjs.send(
         EMAIL_JS_SERVICE_ID, // service_id
         EMAIL_JS_TEMPLATE_ID, // template_id
         {
@@ -108,9 +112,11 @@ export const useLeadForm = (projectName = PROJECT_NAME) => {
           service_id: EMAIL_JS_SERVICE_ID,
           template_id: EMAIL_JS_TEMPLATE_ID,
           user_id: EMAIL_JS_PUBLIC_KEY,
+          // email: formData?.email ?? "N/A",
         },
         EMAIL_JS_PUBLIC_KEY // public key
       );
+      console.log("📧 EmailJS Response:", emailResponse);
 
       // Save locally
       localStorage.setItem("user_phone", phone);

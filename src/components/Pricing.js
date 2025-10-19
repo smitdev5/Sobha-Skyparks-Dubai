@@ -10,19 +10,27 @@ import "../App.css";
 const villas = [
   {
     id: 1,
-    title: "The Coral Collection Villas",
-    description: "5 & 6 Bedroom Villas",
-    size: "7,300 to 8,300 sq.ft",
-    price: "From: 25M AED",
-    img: "../Assets/P1.jpeg",
+    title: "1 Bedroom Apartments",
+    // description: "5 & 6 Bedroom Villas",
+    size: "684 - 870 Sqft",
+    price: "From: 2.86M AED",
+    img: "../Assets/gallery4.webp",
   },
   {
     id: 2,
-    title: "The Beach Collection Villas",
-    description: "5 to 7 Bedroom Villas",
-    size: "11,300 to 12,200 sq.ft",
-    price: "From 32M AED",
-    img: "../Assets/P2.jpeg",
+    title: "2 Bedroom Apartments",
+    // description: "5 to 7 Bedroom Villas",
+    size: "1188 - 1605 Sqft",
+    price: "On Request",
+    img: "../Assets/gallery5.webp",
+  },
+  {
+    id: 3,
+    title: "3 Bedroom Apartments",
+    // description: "5 to 7 Bedroom Villas",
+    size: "2267 - 2271 Sqft",
+    price: "On Request",
+    img: "../Assets/gallery6.webp",
   },
 ];
 
@@ -35,7 +43,7 @@ const PriceSection = () => {
       </h2>
 
       {/* Desktop View - Grid */}
-      <div className="hidden md:grid grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div className="hidden md:grid grid-cols-3 gap-8 max-w-6xl mx-auto">
         {villas.map((villa) => (
           <div
             key={villa.id}
@@ -44,13 +52,13 @@ const PriceSection = () => {
             <img
               src={villa.img}
               alt={villa.title}
-              className="w-full h-72 object-cover"
+              className="w-full h-72 object-cover hover:scale-110 transition-transform duration-300"
             />
             <div className="p-6 text-center">
               <h3 className="text-[#997736] font-bold text-lg mb-2">
                 {villa.title}
               </h3>
-              <p className="text-gray-600">{villa.description}</p>
+              {/* <p className="text-gray-600">{villa.description}</p> */}
               <p className="text-gray-600">{villa.size}</p>
               <p className="text-gray-800 font-semibold">{villa.price}</p>
             </div>
@@ -77,7 +85,7 @@ const PriceSection = () => {
                 <img
                   src={villa.img}
                   alt={villa.title}
-                  className="w-full h-72 object-cover"
+                  className="w-full h-72 object-cover hover:scale-110 transition-transform duration-300"
                 />
                 <div className="p-6 text-center">
                   <h3 className="text-[#997736] font-bold text-lg mb-2">
@@ -96,7 +104,7 @@ const PriceSection = () => {
       {/* Center Button */}
       <div className="flex justify-center mt-10">
         <button onClick={openModal} className="mt-4 font-semibold border-2 rounded-md border-[#997736] text-[#997736] hover:text-white px-6 py-2 hover:bg-[#997736] transition">
-          Browse Palm Jebel Ali Villas
+          Browse Sobha Skyparks Apartments
         </button>
       </div>
     </div>

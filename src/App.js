@@ -64,7 +64,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppContent />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/thankyou" element={<ThankYouPage />} />
+          <Route path="/thankyou.html" element={<ThankYouPage />} />
         </Routes>
       {/* </Router>/ */}
     </EnquiryModalProvider>

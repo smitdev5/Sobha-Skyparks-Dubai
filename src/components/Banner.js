@@ -1,58 +1,94 @@
-import React from "react";
+
+import React, { useState, useEffect } from "react";
+import { useEnquiryModal } from "./EnquiryModal";
 
 export default function Banner() {
+  const { openModal } = useEnquiryModal();
+
+  // Image carousel state and effect
+  const images = [
+    "../Assets/banner1.webp",
+    "../Assets/banner2.webp",
+    "../Assets/banner3.webp",
+    "../Assets/banner4.webp",
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 4000); // 🔁 Change image every 4 seconds
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <section
       id="home"
       className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover transformr rotate-180"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="../Assets/banner2.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* 🔁 Background Image Carousel */}
+      {images.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt={`Banner ${index + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
+            index === currentImage ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+      objectPosition:
+        window.innerWidth < 768
+          ? "68% center" // mobile → thodu center ma
+          : "65% 15%", // desktop → thodu right side
+      transform: "scale(1.03)", // light zoom for natural coverage
+    }}
+        />
+      ))}
 
-      {/* Dark Overlay for text clarity */}
-      <div className="absolute inset-0 "></div>
+      {/* Optional overlay (if needed for clarity) */}
+      <div className="absolute inset-0"></div>
 
-      {/* Content on top */}
+      {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 px-4">
-        {/* Logo / Image 1 */}
-        {/* <img
-          src="../Assets/test-1.png"
-          alt="Banner Logo"
-          className="w-48 md:w-64 lg:w-72 object-contain"
-        /> */}
-
-        {/* Image / Text 2 */}
-        {/* <img
-          src="../Assets/ctc.png"
-          alt="Banner Tagline"
-          className="w-56 md:w-72 lg:w-96 object-contain"
-        /> */}
-
-        {/* Optional Heading/Text */}
         <h1 className="
-            text-xl 
+            text-2xl 
             md:text-3xl 
             lg:text-6xl 
             font-extrabold 
             uppercase 
             tracking-widest
-            bg-gradient-to-r from-white/80 via-white/60 to-white/60
+            bg-gradient-to-r from-white/90 via-white/90 to-white/90
             bg-clip-text 
             text-transparent
             drop-shadow-[2px_2px_10px_rgba(0,0,0,0.8)]
           ">
-          Introducing <br/> PALM JEBEL ALI
+          Introducing <br /> SKYPARKS BY SOBHA REALTY <br />
+          <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-widest
+            bg-gradient-to-r from-white/90 via-white/90 to-white/90
+            bg-clip-text 
+            text-transparent
+            drop-shadow-[2px_2px_10px_rgba(0,0,0,0.8)]
+          ">
+            Starts at
+          </span>
+          <span className="ml-1 text-2xl md:text-3xl lg:text-6xl font-bold tracking-widest
+            bg-gradient-to-r from-white/90 via-white/90 to-white/90
+            bg-clip-text 
+            text-transparent
+            drop-shadow-[2px_2px_10px_rgba(0,0,0,0.8)]
+          ">
+            AED 2.86 M
+          </span>
         </h1>
       </div>
+
+      <button onClick={openModal} className="absolute items-center justify-center lg:bottom-28 bottom-52 z-10 font-bold text-lg
+        bg-gradient-to-r from-white/90 via-white/90 to-white/90 bg-clip-text
+        text-transparent drop-shadow-[2px_2px_10px_rgba(0,0,0,1.6)]
+        border-2 rounded-md border-[#ffffff] bg-transparent hover:text-[#ffffff] px-6 py-2 transition">
+        Get Complete Costing Details
+      </button>
 
       {/* Scroll Down Arrow */}
       <a

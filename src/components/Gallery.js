@@ -5,14 +5,14 @@ import { useEnquiryModal } from "./EnquiryModal";
 import "../App.css";
 
 const images = [
-  "../Assets/g1.webp", // cricket ground
-  "../Assets/g2.webp", // kids play area
-  "../Assets/g3.webp", // swimming pool
-  "../Assets/g4.webp", // badminton
-  "../Assets/g5.webp", // badminton
-  "../Assets/g6.webp", // badminton
-  "../Assets/g7.webp", // badminton
-  "../Assets/g8.webp", // badminton
+  "../Assets/gallery1.webp", // cricket ground
+  "../Assets/gallery2.webp", // kids play area
+  "../Assets/gallery3.webp", // swimming pool
+  "../Assets/gallery4.webp", // badminton
+  "../Assets/gallery5.webp", // badminton
+  "../Assets/gallery6.webp", // badminton
+  // "../Assets/gallery7.webp", // badminton
+  // "../Assets/gallery8.webp", // badminton
 ];
 
 export default function GalleryCarousel() {
@@ -66,7 +66,7 @@ export default function GalleryCarousel() {
             <motion.img
               key={current}
               src={images[current]}
-              alt="amenity"
+              alt="gallery"
               className="w-full h-64 md:h-[400px] object-cover"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}

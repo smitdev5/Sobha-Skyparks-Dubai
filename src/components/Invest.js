@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const carouselItems = [
-  { id: 1, text1: '2 Mins', text2: 'Sheikh Zayed Road' },
-  { id: 2, text1: '15 Mins', text2: 'UAE Exchange Metro Station' },
-  { id: 3, text1: '20 Mins', text2: 'Al Maktoum International Airport' },
-  { id: 4, text1: '25 Mins', text2: 'Dubai Downtown' },
-  { id: 5, text1: '25 Mins', text2: 'Palm Jumeirah' },
-  { id: 6, text1: '25 Mins', text2: 'Dubai Marina' },
+  { id: 1, text1: '5 Mins', text2: 'Business Bay' },
+  { id: 2, text1: '5 Mins', text2: 'DIFC' },
+  { id: 3, text1: '10 Mins', text2: 'Downtown Dubai' },
+  { id: 4, text1: '15 Mins', text2: 'Jumeirah Beach' },
+  { id: 5, text1: '20 Mins', text2: 'Dubai International Airport' },
+  // { id: 6, text1: '20 Mins', text2: 'Dubai Marina' },
 ];
 
 const Invest = () => {
@@ -59,13 +59,13 @@ const Invest = () => {
   return (
     <div className="relative w-full py-44 flex flex-col justify-center items-center font-inter text-white overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('../Assets/g3.webp')" }}>
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('../Assets/gallery5.webp')" }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
 
       {/* Carousel Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-light text-center mb-12 uppercase tracking-wide">
+        <h2 className="text-2xl sm:text-3xl font-light text-center mb-8 uppercase tracking-wide">
           LOCATION CONNECTIVITY
         </h2>
         <div className="relative flex items-center justify-center">

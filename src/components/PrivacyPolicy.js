@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
           <img
             src="../Assets/logo_.webp"
             alt="Logo"
-            className="w-44 h-auto"
+            className="w-60 h-auto"
           />
           <a
             href="tel:+971527195327"
