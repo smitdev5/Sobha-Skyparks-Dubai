@@ -60,7 +60,7 @@ const EnquiryModal = ({ onClose }) => {
       e.target.reset();
       setConsentChecked(false);
       onClose();
-      navigate("/thankyou.html");
+      window.location.href = "/thankyou.html";
     }
   };
 

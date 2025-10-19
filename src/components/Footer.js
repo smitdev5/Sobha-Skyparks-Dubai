@@ -37,7 +37,7 @@ const Footer = () => {
     if (result) {
       e.target.reset();
       setConsentChecked(false);
-      navigate("/thankyou.html"); 
+      window.location.href = "/thankyou.html"; 
     }
   };
 
